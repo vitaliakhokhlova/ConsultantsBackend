@@ -12,6 +12,8 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Cascade;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.util.List;
@@ -23,43 +25,45 @@ import java.util.HashSet;
 @Entity
 @Table(name="personal_info")
 public class Consultant extends ConsultantHeader {
+	
+	Consultant(){super();}
 		
-	@OneToMany(mappedBy="consultant", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="consultant", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Formation> formations;
 	
-	@OneToMany(mappedBy="consultant", fetch = FetchType.LAZY)
-	@OrderBy("position ASC")
+	@OneToMany(mappedBy="consultant", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OrderBy("position")
 	private List<ForcesConsultant> forces;
 	
-	@OneToMany(mappedBy="consultant", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="consultant", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<ParcoursHeader> parcours;
 	
-	@OneToMany(mappedBy="consultant", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="consultant", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<ProjetHeader> projets;
 	
-	@OneToMany(mappedBy="consultant", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="consultant", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<CompetencesConsultant> competences;
 
-	@JsonInclude()
-	@Transient
-	@Column(updatable=false)
-	private Set<CompetenceGroup> groups;
-	
-	public Set<CompetenceGroup> getGroups() {
-		List<CompetencesConsultant> competences = this.getCompetences();
-		Set<CompetenceGroup> groups = new HashSet<CompetenceGroup>();
-		for(CompetencesConsultant c : competences) {
-			CompetenceItem i = c.getCompetence();
-			CompetenceGroup g = c.getGroup();
-			groups.add(g);
-		}
-		return groups;
-	}
-
-	@Transient
-	public void setGroups(Set<CompetenceGroup> groups) {
-		this.groups = groups;
-	}
+//	@JsonInclude()
+//	@Transient
+//	@Column(updatable=false)
+//	private Set<CompetenceGroup> groups;
+//	
+//	public Set<CompetenceGroup> getGroups() {
+//		List<CompetencesConsultant> competences = this.getCompetences();
+//		Set<CompetenceGroup> groups = new HashSet<CompetenceGroup>();
+//		for(CompetencesConsultant c : competences) {
+//			CompetenceItem i = c.getCompetence();
+//			CompetenceGroup g = c.getGroup();
+//			groups.add(g);
+//		}
+//		return groups;
+//	}
+//
+//	@Transient
+//	public void setGroups(Set<CompetenceGroup> groups) {
+//		this.groups = groups;
+//	}
 
 	public List<Formation> getFormations() {
 		return formations;
@@ -96,8 +100,8 @@ public class Consultant extends ConsultantHeader {
 	public void setForces(List<ForcesConsultant> forces) {
 		this.forces = forces;
 	}
-//	public void setCompetences(List<CompetencesConsultant> competences) {
-//		this.competences = competences;
-//	}
+	public void setCompetences(List<CompetencesConsultant> competences) {
+		this.competences = competences;
+	}
 	
 }

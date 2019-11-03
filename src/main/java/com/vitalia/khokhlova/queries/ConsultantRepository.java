@@ -18,7 +18,7 @@ public class ConsultantRepository extends GenericRepository<Consultant>{
 	private EntityManager em = EntityManagerFactorySingleton.getEntityManager();
 
 	public List<Consultant> getAll(){
-		String queryString ="from Consultant";
+		String queryString ="select c from Consultant c order by c.lastname";
 		Query query = em.createQuery(queryString);
 		List<Consultant> tList= query.getResultList();
 		return tList;

@@ -11,6 +11,7 @@ import javax.persistence.Table;
 @Table(name="force_items")
 public class Force extends GenericEntity {
 	
+	
 	private String force;
 	
 	@OneToMany(mappedBy="force", fetch = FetchType.LAZY)

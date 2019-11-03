@@ -7,4 +7,5 @@ public class FormationRepository extends GenericRepository<Formation>{
     public FormationRepository() {
     	super(Formation.class);  
     }
+    
 }

@@ -1,5 +1,7 @@
 package com.vitalia.khokhlova.entities;
 
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
@@ -12,9 +14,13 @@ public abstract class GenericHistoryEntity extends GenericEntity {
     private String place;    
     private String dates;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="cons_id")
     private Consultant consultant;
+    
+    GenericHistoryEntity(){
+    	super();
+    }
 
 	public String getTitle() {
 		return title;
@@ -47,7 +53,6 @@ public abstract class GenericHistoryEntity extends GenericEntity {
 	public void setDates(String dates) {
 		this.dates = dates;
 	}
-    
     
 
 }

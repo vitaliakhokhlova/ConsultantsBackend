@@ -48,7 +48,6 @@ public class GenericRepository<T> {
 		try {
 			tx.begin();
 			em.persist(t);
-			em.refresh(t);
 			tx.commit();
 		}
 		catch (Exception e) {

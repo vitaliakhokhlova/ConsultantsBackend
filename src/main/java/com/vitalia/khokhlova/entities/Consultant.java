@@ -25,8 +25,6 @@ import java.util.HashSet;
 @Entity
 @Table(name="personal_info")
 public class Consultant extends ConsultantHeader {
-	
-	Consultant(){super();}
 		
 	@OneToMany(mappedBy="consultant", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Formation> formations;
@@ -43,6 +41,9 @@ public class Consultant extends ConsultantHeader {
 	
 	@OneToMany(mappedBy="consultant", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<CompetencesConsultant> competences;
+	
+	@OneToMany(mappedBy="consultant", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	private List<LanguesConsultant> langues;
 
 //	@JsonInclude()
 //	@Transient
@@ -64,6 +65,14 @@ public class Consultant extends ConsultantHeader {
 //	public void setGroups(Set<CompetenceGroup> groups) {
 //		this.groups = groups;
 //	}
+
+	public List<LanguesConsultant> getLangues() {
+		return langues;
+	}
+
+	public void setLangues(List<LanguesConsultant> langues) {
+		this.langues = langues;
+	}
 
 	public List<Formation> getFormations() {
 		return formations;

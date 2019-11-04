@@ -41,18 +41,6 @@ public class CompetencesConsultant extends GenericEntity {
     @JoinColumn(name="id")
 	private CompetenceGroup group;
 
-	@JsonInclude()
-	@Transient
-	private String name;
-
-	public String getName() {
-		return this.getCompetence().getItem();
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public CompetenceGroup getGroup() {
 		CompetenceGroup group = this.getCompetence().getGroup();
 		return group;
@@ -102,8 +90,8 @@ public class CompetencesConsultant extends GenericEntity {
 		return competence;
 	}
 
-//	public void setCompetence(CompetenceItem competence) {
-//		this.competence = competence;
-//	}
+	public void setCompetence(CompetenceItem competence) {
+		this.competence = competence;
+	}
     	
 }

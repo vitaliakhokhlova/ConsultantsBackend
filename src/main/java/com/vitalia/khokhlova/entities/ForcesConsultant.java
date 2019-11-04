@@ -14,9 +14,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class ForcesConsultant extends GenericEntity {
 
 	private int position;
-	@JsonInclude()
-	@Transient
-	private String name;
 	
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="cons_id")
@@ -41,13 +38,4 @@ public class ForcesConsultant extends GenericEntity {
 	public void setForce(Force force) {
 		this.force = force;
 	}
-
-	public String getName() {
-		return this.getForce().getForce();
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 }

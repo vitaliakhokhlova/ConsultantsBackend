@@ -26,45 +26,24 @@ import java.util.HashSet;
 @Table(name="personal_info")
 public class Consultant extends ConsultantHeader {
 		
-	@OneToMany(mappedBy="consultant", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Formation> formations;
 	
-	@OneToMany(mappedBy="consultant", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@OrderBy("position")
 	private List<ForcesConsultant> forces;
 	
-	@OneToMany(mappedBy="consultant", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<ParcoursHeader> parcours;
 	
-	@OneToMany(mappedBy="consultant", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<ProjetHeader> projets;
 	
-	@OneToMany(mappedBy="consultant", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<CompetencesConsultant> competences;
 	
-	@OneToMany(mappedBy="consultant", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<LanguesConsultant> langues;
-
-//	@JsonInclude()
-//	@Transient
-//	@Column(updatable=false)
-//	private Set<CompetenceGroup> groups;
-//	
-//	public Set<CompetenceGroup> getGroups() {
-//		List<CompetencesConsultant> competences = this.getCompetences();
-//		Set<CompetenceGroup> groups = new HashSet<CompetenceGroup>();
-//		for(CompetencesConsultant c : competences) {
-//			CompetenceItem i = c.getCompetence();
-//			CompetenceGroup g = c.getGroup();
-//			groups.add(g);
-//		}
-//		return groups;
-//	}
-//
-//	@Transient
-//	public void setGroups(Set<CompetenceGroup> groups) {
-//		this.groups = groups;
-//	}
 
 	public List<LanguesConsultant> getLangues() {
 		return langues;

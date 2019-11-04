@@ -1,54 +1,25 @@
 package com.vitalia.khokhlova.entities;
 
-
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="competences_item")
-public class CompetenceItem extends GenericEntity {
+public class CompetenceItem extends GenericParentWithName<CompetencesConsultant> {
 	
-	private String item;
-	
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="group_id")
-    private CompetenceGroup group;
+    private CompetenceGroup item;
     
-	@OneToMany(mappedBy="competence", fetch = FetchType.LAZY)
-	private List<CompetencesConsultant> competences;
-	
-	public CompetenceItem() {
-		super();
-	}
-
-	public String getItem() {
+	public CompetenceGroup getItem() {
 		return item;
 	}
 
-	public void setItem(String item) {
+	public void setItem(CompetenceGroup item) {
 		this.item = item;
-	}
-
-	public CompetenceGroup getGroup() {
-		return group;
-	}
-
-	@Override
-	public String toString() {
-		return "CompetenceItem [item=" + item + "]";
-	}
-
-	public List<CompetencesConsultant> getCompetences() {
-		return competences;
 	}
 
 }

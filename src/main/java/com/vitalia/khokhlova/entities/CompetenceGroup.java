@@ -15,52 +15,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
 @Table(name="competences_group")
-public class CompetenceGroup extends GenericEntity {
+public class CompetenceGroup extends GenericParentWithName<CompetenceItem> {
 
-	private String description;
-
-	CompetenceGroup(){};
-
-	@OneToMany(mappedBy="group", fetch = FetchType.LAZY)
-	private List<CompetenceItem> items;
-
-	@JsonInclude()
-	@Transient
-	@OneToMany(mappedBy="group", fetch = FetchType.LAZY)
-	private List<CompetencesConsultant> competences;
-
-	public List<CompetencesConsultant> getCompetences() {
-		List<CompetencesConsultant> competences = new ArrayList<>();
-		for(CompetenceItem i : this.getItems()) {
-			for(CompetencesConsultant c : i.getCompetences()) {
-				competences.add(c);
-			}
-		}
-		return competences;
-	}
-
-	public void setCompetences(List<CompetencesConsultant> competences) {
-		this.competences = competences;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public void addItem (CompetenceItem item) {
-		this.items.add(item);
-	}
-
-	public List<CompetenceItem> getItems() {
-		return items;
-	}
-	//
-	//	public void setItems(List<CompetenceItem> items) {
-	//		this.items = items;
-	//	}
 
 }

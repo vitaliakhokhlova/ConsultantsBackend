@@ -11,18 +11,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
 @Table(name="forces")
-public class ForcesConsultant extends GenericEntity {
+public class ForcesConsultant extends GenericIntermediateEntity<Consultant, ForceItem> {
 
 	private int position;
 	
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="cons_id")
-    private Consultant consultant;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="force_item_id")
-    private Force force;
-
 	public int getPosition() {
 		return position;
 	}
@@ -30,12 +22,5 @@ public class ForcesConsultant extends GenericEntity {
 	public void setPosition(int position) {
 		this.position = position;
 	}
-	
-	public Force getForce() {
-		return force;
-	}
 
-	public void setForce(Force force) {
-		this.force = force;
-	}
 }

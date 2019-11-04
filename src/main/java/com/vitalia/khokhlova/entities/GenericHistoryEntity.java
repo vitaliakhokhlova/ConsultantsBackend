@@ -7,28 +7,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public abstract class GenericHistoryEntity extends GenericEntity {
+public abstract class GenericHistoryEntity extends GenericChild<Consultant> {
 	
-    private String title;
     private String institution;
+    private String description;
     private String place;    
     private String dates;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="cons_id")
-    private Consultant consultant;
     
     GenericHistoryEntity(){
     	super();
     }
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
 
 	public String getInstitution() {
 		return institution;
@@ -52,6 +41,14 @@ public abstract class GenericHistoryEntity extends GenericEntity {
 
 	public void setDates(String dates) {
 		this.dates = dates;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
     
 

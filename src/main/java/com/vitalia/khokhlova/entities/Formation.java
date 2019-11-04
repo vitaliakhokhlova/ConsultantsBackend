@@ -8,7 +8,4 @@ import javax.persistence.Table;
 @Table(name="formations")
 public class Formation<ProjetDetail> extends GenericHistoryEntity {
 	
-	Formation(){
-		super();
-	}
 }

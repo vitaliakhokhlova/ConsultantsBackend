@@ -1,6 +1,7 @@
 package com.vitalia.khokhlova.queries;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -23,6 +24,13 @@ public class ConsultantRepository extends GenericRepository<Consultant>{
 		List<Consultant> tList= query.getResultList();
 		return tList;
 	}
+	
+//	public Set<CompetenceGroup> getGroupedCompetences(int id){
+//		String queryString ="select g from CompetenceGroup g JOIN ";
+//		Query query = em.createQuery(queryString);
+//		List<Consultant> tList= query.getResultList();
+//		return tList;
+//	}
 
     
 //	public Consultant getById(int id) {

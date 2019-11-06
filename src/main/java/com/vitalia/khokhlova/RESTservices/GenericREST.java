@@ -17,12 +17,12 @@ public class GenericREST<Entity> {
         this.repository = this.repository = new GenericRepository<Entity>(this.entityClass);
     }
 	
-//	@GET
-//	@Path("/all")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public List<Entity> getAll() {
-//		return repository.getAll();
-//	}
+	@GET
+	@Path("/all")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Entity> getAll() {
+		return repository.getAll();
+	}
 
 	@GET
 	@Path("/{id}")

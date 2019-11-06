@@ -17,13 +17,13 @@ public class GenericRepository<T> {
 
 	private EntityManager em = EntityManagerFactorySingleton.getEntityManager();
 
-//	public List<T> getAll(){
-//		System.out.println("Class name" + entityClass.getName());
-//		String queryString ="select item from "+entityClass.getName()+" item";
-//		TypedQuery<T> query = em.createQuery(queryString, entityClass);
-//		List<T> tList= query.getResultList();
-//		return tList;
-//	}
+	public List<T> getAll(){
+		System.out.println("Class name" + entityClass.getName());
+		String queryString ="select item from "+entityClass.getName()+" item";
+		TypedQuery<T> query = em.createQuery(queryString, entityClass);
+		List<T> tList= query.getResultList();
+		return tList;
+	}
 
 	/**
 	 * @param id
@@ -44,6 +44,7 @@ public class GenericRepository<T> {
 	}
 
 	public void create(T t) {
+		
 		EntityTransaction tx = em.getTransaction();
 		try {
 			tx.begin();
@@ -52,6 +53,7 @@ public class GenericRepository<T> {
 		}
 		catch (Exception e) {
 			tx.rollback();
+			System.out.println("Creating error");
 		}
 	}
 
@@ -64,6 +66,7 @@ public class GenericRepository<T> {
 		}
 		catch (Exception e) {
 			tx.rollback();
+			System.out.println("Updating error");
 		}
 	}
 

@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
 @Table(name="forces")
-public class ForcesConsultant extends GenericIntermediateEntity<Consultant, ForceItem> {
+public class ForcesConsultant extends GenericIntermediateEntity<ForceItem> {
 
 	private int position;
 	
@@ -22,5 +22,4 @@ public class ForcesConsultant extends GenericIntermediateEntity<Consultant, Forc
 	public void setPosition(int position) {
 		this.position = position;
 	}
-
 }

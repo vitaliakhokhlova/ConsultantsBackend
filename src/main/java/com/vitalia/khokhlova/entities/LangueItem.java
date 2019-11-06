@@ -2,6 +2,7 @@ package com.vitalia.khokhlova.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -12,6 +13,6 @@ import com.vitalia.khokhlova.entities.LanguesConsultant;
 
 @Entity
 @Table(name="langue_items")
-public class LangueItem extends GenericParentWithName<LanguesConsultant> {		
+public class LangueItem extends GenericParentWithName<LanguesConsultant> {	
 	
 }

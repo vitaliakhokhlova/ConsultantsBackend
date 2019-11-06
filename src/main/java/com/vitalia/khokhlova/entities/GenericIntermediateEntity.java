@@ -7,22 +7,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class GenericIntermediateEntity<V extends GenericEntity, T extends GenericParentWithName> extends GenericEntity {
+public class GenericIntermediateEntity<T extends GenericParentWithName> extends GenericChild<Consultant> {
 	
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="item_id")
-    private T item;
+    @JoinColumn(name="parent2_id")
+    private T parent2;
 
-	public T getItem() {
-		return item;
-	}
-
-	public void setItem(T item) {
-		this.item = item;
-	}
 	
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="parent_id")
-    private V parent;
+    public T getParent2() {
+		return parent2;
+	}
+
+	public void setParent2(T parent2) {
+		this.parent2 = parent2;
+	}
 
 }

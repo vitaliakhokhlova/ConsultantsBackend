@@ -3,7 +3,8 @@
 	<persistence-unit name="RESTful">
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>com.vitalia.khokhlova.entities.Consultant</class>
-		<class>com.vitalia.khokhlova.entities.Formation</class>
+		<class>com.vitalia.khokhlova.entities.CompetenceGroup</class>
+		<class>com.vitalia.khokhlova.entities.CompetenceItem</class>
 		<properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/consultants" />

@@ -14,11 +14,6 @@ public abstract class GenericHistoryEntity extends GenericChild<Consultant> {
     private String place;    
     private String dates;
 
-    
-    GenericHistoryEntity(){
-    	super();
-    }
-
 	public String getInstitution() {
 		return institution;
 	}

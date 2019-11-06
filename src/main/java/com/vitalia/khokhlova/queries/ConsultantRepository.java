@@ -18,19 +18,51 @@ public class ConsultantRepository extends GenericRepository<Consultant>{
     
 	private EntityManager em = EntityManagerFactorySingleton.getEntityManager();
 
+	@Override
 	public List<Consultant> getAll(){
 		String queryString ="select c from Consultant c order by c.lastname";
 		Query query = em.createQuery(queryString);
 		List<Consultant> tList= query.getResultList();
 		return tList;
 	}
+
 	
-//	public Set<CompetenceGroup> getGroupedCompetences(int id){
-//		String queryString ="select g from CompetenceGroup g JOIN ";
+	public List<CompetenceGroup> getGroupedCompetences(int id){
+		String queryString ="select distinct g from CompetenceGroup g JOIN fetch g.items i JOIN fetch i.items c WHERE c.parent.id="+id;
+		Query query = em.createQuery(queryString);
+		List tList= query.getResultList();
+		return tList;
+	}
+		
+	
+	public List<CompetenceGroup> getGroupedEmptyCompetences(int id){
+		String queryString ="select distinct g from CompetenceGroup g JOIN fetch g.items i LEFT JOIN fetch i.items c WHERE i.items is empty or c.parent.id="+id;
+		Query query = em.createQuery(queryString);
+		List tList= query.getResultList();
+		return tList;
+	}
+	
+	
+//	public List<CompetenceGroup> getGroupedEmptyCompetences(int id){
+//		String queryString ="select distinct g from CompetenceGroup g JOIN g.items i FULL JOIN i.items c WHERE c.parent.id="+id;
 //		Query query = em.createQuery(queryString);
-//		List<Consultant> tList= query.getResultList();
+//		List tList= query.getResultList();
 //		return tList;
 //	}
+	
+//	public List<CompetenceGroup> getGroupedCompetences(int id){
+//		String queryString ="select distinct g from CompetencesConsultant comp JOIN comp.parent2 i JOIN i.parent2 g WHERE comp.id is not null and comp.parent.id="+id;
+//		Query query = em.createQuery(queryString);
+//		List tList= query.getResultList();
+//		return tList;
+//	}
+	
+	public List<CompetenceItem> getExistingCompetences(int id){
+		String queryString ="select i from CompetencesConsultant comp JOIN comp.parent2 i WHERE comp.parent.id="+id;
+		Query query = em.createQuery(queryString);
+		List tList= query.getResultList();
+		return tList;
+	}
 
     
 //	public Consultant getById(int id) {

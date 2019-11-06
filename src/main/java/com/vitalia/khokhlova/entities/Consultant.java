@@ -26,7 +26,7 @@ import java.util.HashSet;
 @Table(name="personal_info")
 public class Consultant extends ConsultantHeader {
 		
-	@OneToMany(mappedBy="parent", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Formation> formations;
 	
 	@OneToMany(mappedBy="parent", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
@@ -57,8 +57,12 @@ public class Consultant extends ConsultantHeader {
 		return formations;
 	}
 
-	public void setFormations(List<Formation> formations) {
+	public void setFormations(List<Formation> formations) {	
 		this.formations = formations;
+		for(Formation f : this.formations)
+		{
+			f.parent = this;
+		}
 	}
 
 	public List<ParcoursHeader> getParcours() {
@@ -77,9 +81,7 @@ public class Consultant extends ConsultantHeader {
 		this.projets = projets;
 	}
 
-	public List<CompetencesConsultant> getCompetences() {
-		return competences;
-	}
+
 
 	public List<ForcesConsultant> getForces() {
 		return forces;
@@ -88,8 +90,13 @@ public class Consultant extends ConsultantHeader {
 	public void setForces(List<ForcesConsultant> forces) {
 		this.forces = forces;
 	}
-	public void setCompetences(List<CompetencesConsultant> competences) {
-		this.competences = competences;
+	
+	public List<CompetencesConsultant> getCompetences() {
+		return competences;
 	}
+	
+//	public void setCompetences(List<CompetencesConsultant> competences) {
+//		this.competences = competences;
+//	}
 	
 }

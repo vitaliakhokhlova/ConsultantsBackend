@@ -9,12 +9,8 @@ import javax.persistence.OneToMany;
 
 @MappedSuperclass
 public abstract class GenericHeaderEntity<T extends GenericDetail> extends GenericHistoryEntity {
-	
-	GenericHeaderEntity(){
-    	super();
-    }
-	
-	@OneToMany(mappedBy="header", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+
+	@OneToMany(mappedBy="parent", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<T> details;
 
 	public List<T> getDetails() {

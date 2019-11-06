@@ -1,14 +1,18 @@
 package com.vitalia.khokhlova.entities;
 
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class GenericCompetenceLine<T extends GenericParentWithName> extends GenericIntermediateEntity<Consultant, T>{
+public class GenericCompetenceLine extends GenericChild<Consultant>{
 	
 	private int experience;
 	private int annee;
 	private String contexte;
-	private String interet;	   
+	private String interet;	
 
 	public int getExperience() {
 		return experience;
@@ -41,5 +45,5 @@ public class GenericCompetenceLine<T extends GenericParentWithName> extends Gene
 	public void setInteret(String interet) {
 		this.interet = interet;
 	}
-
+	
 }

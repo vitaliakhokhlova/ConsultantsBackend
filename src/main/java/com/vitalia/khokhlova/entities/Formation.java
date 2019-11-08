@@ -6,6 +6,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="formations")
-public class Formation<ProjetDetail> extends GenericHistoryEntity {
+public class Formation extends GenericHistoryEntity {
 	
 }

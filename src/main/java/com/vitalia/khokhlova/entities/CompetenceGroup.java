@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @Table(name="competences_group")
 public class CompetenceGroup extends GenericParentWithName<CompetenceItem> {
 	
-//	@LazyCollection(LazyCollectionOption.FALSE)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	public Set<CompetenceItem> getItems() {
 		return items;
 	}

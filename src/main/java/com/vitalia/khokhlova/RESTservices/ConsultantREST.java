@@ -12,30 +12,32 @@ import com.vitalia.khokhlova.entities.CompetenceGroup;
 import com.vitalia.khokhlova.entities.CompetenceItem;
 import com.vitalia.khokhlova.entities.Consultant;
 import com.vitalia.khokhlova.queries.ConsultantRepository;
+import com.vitalia.khokhlova.queries.GenericRepository;
 
 
 @Path("/consultant")
 public class ConsultantREST extends GenericREST<Consultant> {
 	
+	private ConsultantRepository repository;
+	
 	public ConsultantREST() {
 		super(Consultant.class);
+		this.repository = new ConsultantRepository();
 	}
-	
-	ConsultantRepository repository = new ConsultantRepository();
 	
 	@GET
 	@Path("/all")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Override
 	public List<Consultant> getAll() {
-		return this.repository.getAll();
+		return repository.getAll();
 	}
 	
 	@GET
 	@Path("/{id}/grouped_competences")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<CompetenceGroup> getGroupedCompetences(@PathParam("id") int id) {
-		List<CompetenceGroup> tList = this.repository.getGroupedCompetences(id);
+		List<CompetenceGroup> tList = repository.getGroupedCompetences(id);
 		System.out.println("Got database response");
 		return tList;
 	}
@@ -44,7 +46,7 @@ public class ConsultantREST extends GenericREST<Consultant> {
 	@Path("/{id}/grouped_empty_competences")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<CompetenceGroup> getGroupedEmptyCompetences(@PathParam("id") int id) {
-		List<CompetenceGroup> tList = this.repository.getGroupedEmptyCompetences(id);
+		List<CompetenceGroup> tList = repository.getGroupedEmptyCompetences(id);
 		System.out.println("Got database response");
 		return tList;
 	}
@@ -53,7 +55,7 @@ public class ConsultantREST extends GenericREST<Consultant> {
 	@Path("/{id}/competences")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<CompetenceItem> getExistingCompetences(@PathParam("id") int id) {
-		return this.repository.getExistingCompetences(id);
+		return repository.getExistingCompetences(id);
 	}
 
 }

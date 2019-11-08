@@ -1,42 +1,30 @@
 package com.vitalia.khokhlova.entities;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;  
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-
-import org.hibernate.annotations.Cascade;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.util.List;
-import java.util.Set;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
+
 
 @Entity
 @Table(name="personal_info")
 public class Consultant extends ConsultantHeader {
 		
-	@OneToMany(mappedBy="parent",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent", orphanRemoval=true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Formation> formations;
 	
 	@OneToMany(mappedBy="parent", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@OrderBy("position")
 	private List<ForcesConsultant> forces;
 	
-	@OneToMany(mappedBy="parent", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent", orphanRemoval=true,  fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<ParcoursHeader> parcours;
 	
-	@OneToMany(mappedBy="parent", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent", orphanRemoval=true, fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<ProjetHeader> projets;
 	
 	@OneToMany(mappedBy="parent", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
@@ -71,6 +59,10 @@ public class Consultant extends ConsultantHeader {
 
 	public void setParcours(List<ParcoursHeader> parcours) {
 		this.parcours = parcours;
+		for(ParcoursHeader f : this.parcours)
+		{
+			f.parent = this;
+		}
 	}
 
 	public List<ProjetHeader> getProjets() {
@@ -79,6 +71,13 @@ public class Consultant extends ConsultantHeader {
 
 	public void setProjets(List<ProjetHeader> projets) {
 		this.projets = projets;
+		for(ProjetHeader header : this.projets)
+		{
+			header.parent = this;
+//			for(ProjetDetail detail: header.details) {
+//				detail.parent = header;
+//			}
+		}
 	}
 
 
@@ -95,8 +94,8 @@ public class Consultant extends ConsultantHeader {
 		return competences;
 	}
 	
-//	public void setCompetences(List<CompetencesConsultant> competences) {
-//		this.competences = competences;
-//	}
+	public void setCompetences(List<CompetencesConsultant> competences) {
+		this.competences = competences;
+	}
 	
 }

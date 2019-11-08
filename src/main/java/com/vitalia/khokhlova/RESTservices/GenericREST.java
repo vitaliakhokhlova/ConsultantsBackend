@@ -14,7 +14,7 @@ public class GenericREST<Entity> {
 
     public GenericREST(Class<Entity> entityClass){
         this.entityClass = entityClass;
-        this.repository = this.repository = new GenericRepository<Entity>(this.entityClass);
+        this.repository = new GenericRepository<Entity>(this.entityClass);
     }
 	
 	@GET
@@ -28,7 +28,7 @@ public class GenericREST<Entity> {
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Entity getById(@PathParam("id") int id) {
-		return (Entity) repository.getById(id);
+		return repository.getById(id);
 	}
 
 	@DELETE

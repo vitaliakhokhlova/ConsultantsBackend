@@ -27,9 +27,9 @@ public class CompetenceItem extends GenericParentWithName<CompetencesConsultant>
 		return items;
 	}
 
-	public void setItems(Set<CompetencesConsultant> items) {
-		this.items = items;
-	}
+//	public void setItems(Set<CompetencesConsultant> items) {
+//		this.items = items;
+//	}
 
 	@Override
 	public String toString() {

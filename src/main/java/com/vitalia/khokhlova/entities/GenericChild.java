@@ -11,21 +11,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @MappedSuperclass
 public class GenericChild<T> extends GenericEntity {
-	
-	
+		
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="parent_id")  
     @JsonIgnore
 	protected T parent;
 
-//	public T getParent() {
-//		return parent;
-//	}
-//
-//	@JsonIgnore
-//	public void setParent(T parent) {
-//		this.parent = parent;
-//	}
-//	
-	
 }

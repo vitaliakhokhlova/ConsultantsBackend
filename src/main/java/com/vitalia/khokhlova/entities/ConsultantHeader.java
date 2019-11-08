@@ -3,9 +3,7 @@ package com.vitalia.khokhlova.entities;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Table;
 
 @MappedSuperclass
 public class ConsultantHeader  extends GenericEntity {

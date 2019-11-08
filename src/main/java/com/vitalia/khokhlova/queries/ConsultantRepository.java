@@ -1,12 +1,8 @@
 package com.vitalia.khokhlova.queries;
 
 import java.util.List;
-import java.util.Set;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 
 import com.vitalia.khokhlova.entities.*;
 
@@ -16,8 +12,6 @@ public class ConsultantRepository extends GenericRepository<Consultant>{
     	super(Consultant.class);  
     }
     
-	private EntityManager em = EntityManagerFactorySingleton.getEntityManager();
-
 	@Override
 	public List<Consultant> getAll(){
 		String queryString ="select c from Consultant c order by c.lastname";
@@ -36,8 +30,8 @@ public class ConsultantRepository extends GenericRepository<Consultant>{
 		
 	
 	public List<CompetenceGroup> getGroupedEmptyCompetences(int id){
-		String queryString ="select distinct g from CompetenceGroup g JOIN fetch g.items i LEFT JOIN fetch i.items c WHERE i.items is empty or c.parent.id="+id;
-		Query query = em.createQuery(queryString);
+		String queryString ="select distinct g from CompetenceGroup as g JOIN fetch g.items as i where i.items in (select c CompetencesConsultant as c WHERE c.parent.id=:id)";
+		Query query = em.createQuery(queryString).setParameter("id", id);
 		List tList= query.getResultList();
 		return tList;
 	}

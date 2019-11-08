@@ -9,13 +9,13 @@ import javax.persistence.TypedQuery;
 
 public class GenericRepository<T> {
 
-    protected Class<T> entityClass;
+    private Class<T> entityClass;
 
     public GenericRepository(Class<T> entityClass){
         this.entityClass = entityClass;
     } 
 
-	private EntityManager em = EntityManagerFactorySingleton.getEntityManager();
+	protected EntityManager em = EntityManagerFactorySingleton.getEntityManager();
 
 	public List<T> getAll(){
 		System.out.println("Class name" + entityClass.getName());
@@ -25,10 +25,6 @@ public class GenericRepository<T> {
 		return tList;
 	}
 
-	/**
-	 * @param id
-	 * @return
-	 */
 	public T getById(int id) {
 		return em.find(entityClass, id);
 	}

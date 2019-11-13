@@ -22,10 +22,10 @@ public class CompetenceItem extends GenericParentWithName<CompetencesConsultant>
     @JoinColumn(name="group_id")
     private CompetenceGroup parent2;
     
-    @LazyCollection(LazyCollectionOption.FALSE)
-	public Set<CompetencesConsultant> getItems() {
-		return items;
-	}
+//    @LazyCollection(LazyCollectionOption.FALSE)
+//	public Set<CompetencesConsultant> getItems() {
+//		return items;
+//	}
 
 //	public void setItems(Set<CompetencesConsultant> items) {
 //		this.items = items;
@@ -35,14 +35,11 @@ public class CompetenceItem extends GenericParentWithName<CompetencesConsultant>
 	public String toString() {
 		return "CompetenceItem [parent2=" + parent2 + ", items=" + items + "]";
 	}
-	
-	
 
+	public CompetenceGroup getParent2() {
+		return parent2;
+	}
 
-//	public CompetenceGroup getParent2() {
-//		return parent2;
-//	}
-//
 //	public void setParent2(CompetenceGroup parent2) {
 //		this.parent2 = parent2;
 //	}

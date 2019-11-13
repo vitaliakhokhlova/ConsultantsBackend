@@ -29,12 +29,17 @@ public class ConsultantRepository extends GenericRepository<Consultant>{
 	}
 		
 	
-	public List<CompetenceGroup> getGroupedEmptyCompetences(int id){
-		String queryString ="select distinct g from CompetenceGroup as g JOIN fetch g.items as i where i.items in (select c CompetencesConsultant as c WHERE c.parent.id=:id)";
-		Query query = em.createQuery(queryString).setParameter("id", id);
-		List tList= query.getResultList();
-		return tList;
-	}
+//	public List<CompetenceGroup> getGroupedEmptyCompetences(int id){
+//		String queryString ="select distinct g from CompetenceGroup as g";
+//		Query query = em.createQuery(queryString).setParameter("id", id);
+//		List tList= query.getResultList();
+//		
+//		Consultant consultant=em.find(Consultant.class, id);
+//		for(CompetencesConsultant i : consultant.competences) {
+//			
+//		}
+//		return tList;
+//	}
 	
 	
 //	public List<CompetenceGroup> getGroupedEmptyCompetences(int id){
@@ -51,8 +56,8 @@ public class ConsultantRepository extends GenericRepository<Consultant>{
 //		return tList;
 //	}
 	
-	public List<CompetenceItem> getExistingCompetences(int id){
-		String queryString ="select i from CompetencesConsultant comp JOIN comp.parent2 i WHERE comp.parent.id="+id;
+	public List<CompetencesConsultant> getExistingCompetences(int id){
+		String queryString ="select comp from CompetencesConsultant comp WHERE comp.parent.id="+id;
 		Query query = em.createQuery(queryString);
 		List tList= query.getResultList();
 		return tList;

@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 @MappedSuperclass
 public class GenericParentWithName<T> extends GenericEntity {
@@ -21,6 +22,7 @@ public class GenericParentWithName<T> extends GenericEntity {
 		this.description = description;
 	}  
 	
+	@OrderBy("id")
 	@OneToMany(mappedBy="parent2", cascade = CascadeType.ALL)
 	protected Set<T> items;
 	

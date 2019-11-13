@@ -17,7 +17,7 @@ public class Consultant extends ConsultantHeader {
 	@OneToMany(mappedBy="parent", orphanRemoval=true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Formation> formations;
 	
-	@OneToMany(mappedBy="parent", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent", orphanRemoval=true, fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@OrderBy("position")
 	private List<ForcesConsultant> forces;
 	
@@ -71,16 +71,11 @@ public class Consultant extends ConsultantHeader {
 
 	public void setProjets(List<ProjetHeader> projets) {
 		this.projets = projets;
-		for(ProjetHeader header : this.projets)
+		for(ProjetHeader item : this.projets)
 		{
-			header.parent = this;
-//			for(ProjetDetail detail: header.details) {
-//				detail.parent = header;
-//			}
+			item.parent = this;
 		}
 	}
-
-
 
 	public List<ForcesConsultant> getForces() {
 		return forces;
@@ -88,6 +83,10 @@ public class Consultant extends ConsultantHeader {
 
 	public void setForces(List<ForcesConsultant> forces) {
 		this.forces = forces;
+		for(ForcesConsultant item : this.forces)
+		{
+			item.parent = this;
+		}
 	}
 	
 	public List<CompetencesConsultant> getCompetences() {

@@ -19,7 +19,7 @@ public class GenericRepository<T> {
 
 	public List<T> getAll(){
 		System.out.println("Class name" + entityClass.getName());
-		String queryString ="select item from "+entityClass.getName()+" item";
+		String queryString ="select item from "+entityClass.getName()+" item order by item.id";
 		TypedQuery<T> query = em.createQuery(queryString, entityClass);
 		List<T> tList= query.getResultList();
 		return tList;

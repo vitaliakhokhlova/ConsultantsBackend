@@ -1,4 +1,4 @@
-package com.vitalia.khokhlova.entities;
+	package com.vitalia.khokhlova.entities;
 
 import java.util.List;
 import java.util.Set;
@@ -36,8 +36,18 @@ public class CompetencesConsultant extends GenericCompetenceLine {
 		return parent2;	}
 
 	
-    @ManyToOne(cascade = CascadeType.ALL)
+    public void setParent2(CompetenceItem parent2) {
+		this.parent2 = parent2;
+	}
+
+	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="parent_id")
 	protected Consultant parent;
-
+    
+//
+//	public void setParent2(CompetenceItem parent2) {
+//		this.parent2 = parent2;
+//	}
+//	
+	
 }

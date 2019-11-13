@@ -14,7 +14,6 @@ public class GenericChild<T> extends GenericEntity {
 		
     @ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="parent_id")  
-    @JsonIgnore
 	protected T parent;
 
 }

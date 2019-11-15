@@ -27,14 +27,6 @@ public class ConsultantREST extends GenericREST<Consultant> {
 	}
 	
 	@GET
-	@Path("/all")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Override
-	public List<Consultant> getAll() {
-		return repository.getAll();
-	}
-	
-	@GET
 	@Path("/{id}/grouped_competences")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<CompetenceGroup> getGroupedCompetences(@PathParam("id") int id) {

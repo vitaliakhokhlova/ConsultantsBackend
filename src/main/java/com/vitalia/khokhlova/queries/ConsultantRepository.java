@@ -11,15 +11,6 @@ public class ConsultantRepository extends GenericRepository<Consultant>{
     public ConsultantRepository() {
     	super(Consultant.class);  
     }
-    
-	@Override
-	public List<Consultant> getAll(){
-		String queryString ="select c from Consultant c order by c.lastname";
-		Query query = em.createQuery(queryString);
-		List<Consultant> tList= query.getResultList();
-		return tList;
-	}
-
 	
 	public List<CompetenceGroup> getGroupedCompetences(int id){
 		String queryString ="select distinct g from CompetenceGroup g JOIN fetch g.items i JOIN fetch i.items c WHERE c.parent.id="+id;

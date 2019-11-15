@@ -7,9 +7,15 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
-@Table(name="langues")
+@Table(name="langues",
+uniqueConstraints=
+@UniqueConstraint(columnNames = {"parent_id", "parent2_id"}))
 public class LanguesConsultant extends GenericCompetenceLine {
 	
 	@Column(length=20)
@@ -36,6 +42,5 @@ public class LanguesConsultant extends GenericCompetenceLine {
 	public void setParent2(LangueItem parent2) {
 		this.parent2 = parent2;
 	}
-
-  
+ 
 }

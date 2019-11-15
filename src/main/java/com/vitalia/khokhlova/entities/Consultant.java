@@ -39,6 +39,10 @@ public class Consultant extends ConsultantHeader {
 
 	public void setLangues(List<LanguesConsultant> langues) {
 		this.langues = langues;
+		for(LanguesConsultant item : this.langues)
+		{
+			item.parent = this;
+		}
 	}
 
 	public List<Formation> getFormations() {

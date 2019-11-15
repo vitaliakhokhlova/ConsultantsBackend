@@ -7,6 +7,8 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import com.vitalia.khokhlova.entities.Consultant;
+
 public class GenericRepository<T> {
 
     private Class<T> entityClass;
@@ -21,6 +23,13 @@ public class GenericRepository<T> {
 		System.out.println("Class name" + entityClass.getName());
 		String queryString ="select item from "+entityClass.getName()+" item order by item.id";
 		TypedQuery<T> query = em.createQuery(queryString, entityClass);
+		List<T> tList= query.getResultList();
+		return tList;
+	}
+	
+	public List<T> getAllOrdered(String column){
+		String queryString ="select c from " + entityClass.getName() + " c order by c."+column;
+		Query query = em.createQuery(queryString);
 		List<T> tList= query.getResultList();
 		return tList;
 	}

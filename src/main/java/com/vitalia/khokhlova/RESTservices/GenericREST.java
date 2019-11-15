@@ -23,6 +23,13 @@ public class GenericREST<Entity> {
 	public List<Entity> getAll() {
 		return repository.getAll();
 	}
+	
+	@GET
+	@Path("/all_ordered_by_{column}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Entity> getAllOrdered(@PathParam("column") String column) {
+		return repository.getAllOrdered(column);
+	}
 
 	@GET
 	@Path("/{id}")

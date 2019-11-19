@@ -92,15 +92,15 @@ public class Consultant extends ConsultantHeader {
 		}
 	}
 	
-//	public List<CompetencesConsultant> getCompetences() {
-//		return competences;
-//	}
-//	
-//	public void setCompetences(List<CompetencesConsultant> competences) {
-//		this.competences = competences;
-//		for(CompetencesConsultant item : this.competences)
-//		{
-//			item.parent = this;
-//		}
-//	}	
+	public List<CompetencesConsultant> getCompetences() {
+		return competences;
+	}
+	
+	public void setCompetences(List<CompetencesConsultant> competences) {
+		this.competences = competences;
+		for(CompetencesConsultant item : this.competences)
+		{
+			item.parent = this;
+		}
+	}	
 }

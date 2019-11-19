@@ -37,8 +37,6 @@ public class CompetencesConsultant extends GenericCompetenceLine {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="parent2_id") 
-//	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-//	@JsonIdentityReference(alwaysAsId = true)
 	private CompetenceItem parent2;
 
 	public CompetenceItem getParent2() {
@@ -46,20 +44,5 @@ public class CompetencesConsultant extends GenericCompetenceLine {
 	
     public void setParent2(CompetenceItem parent2) {
 		this.parent2 = parent2;
-	}
-
-	@ManyToOne()
-    @JoinColumn(name="parent_id", foreignKey = @ForeignKey(name = "cons_id_fkey"))
-//	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-//	@JsonIdentityReference(alwaysAsId = true)
-	private Consultant parent;
-
-	public Consultant getParent() {
-		return parent;
-	}
-
-	public void setParent(Consultant parent) {
-		this.parent = parent;
-	}
-    	
+	}    	
 }

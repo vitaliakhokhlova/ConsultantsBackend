@@ -14,8 +14,6 @@ public class GenericChild<T> extends GenericEntity {
 		
     @ManyToOne()
 	@JoinColumn(name="parent_id") 
-//	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-//	@JsonIdentityReference(alwaysAsId = true)
 	protected T parent;
 
 }

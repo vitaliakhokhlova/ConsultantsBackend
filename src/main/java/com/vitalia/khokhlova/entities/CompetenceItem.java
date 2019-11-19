@@ -20,26 +20,4 @@ public class CompetenceItem extends GenericParentWithName<CompetencesConsultant>
 	
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="group_id") CompetenceGroup parent2;
-    
-//    @LazyCollection(LazyCollectionOption.FALSE)
-//	public Set<CompetencesConsultant> getItems() {
-//		return items;
-//	}
-
-//	public void setItems(Set<CompetencesConsultant> items) {
-//		this.items = items;
-//		for(CompetencesConsultant item : this.items)
-//		{
-//			item.parent2 = this;
-//		}
-//	}
-
-
-//	public CompetenceGroup getParent2() {
-//		return parent2;
-//	}
-
-//	public void setParent2(CompetenceGroup parent2) {
-//		this.parent2 = parent2;
-//	}
 }

@@ -9,7 +9,7 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class GenericIntermediateEntity<T extends GenericParentWithName> extends GenericChild<Consultant> {
 	
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="parent2_id")
     private T parent2;
 

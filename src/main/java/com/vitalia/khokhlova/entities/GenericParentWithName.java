@@ -23,8 +23,7 @@ public class GenericParentWithName<T> extends GenericEntity {
 	}  
 	
 	@OrderBy("id")
-	@OneToMany(mappedBy="parent2", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent2", orphanRemoval=true, fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	protected Set<T> items;
 	
-
 }

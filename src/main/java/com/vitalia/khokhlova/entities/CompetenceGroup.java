@@ -24,13 +24,17 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class CompetenceGroup extends GenericParentWithName<CompetenceItem> {
 	
 	
-	@LazyCollection(LazyCollectionOption.FALSE)
+//	@LazyCollection(LazyCollectionOption.FALSE)
 	public Set<CompetenceItem> getItems() {
 		return items;
 	}
 
 	public void setItems(Set<CompetenceItem> items) {
 		this.items = items;
+		for(CompetenceItem item : this.items)
+		{
+			item.parent2 = this;
+		}
 	}
 
 	@Override

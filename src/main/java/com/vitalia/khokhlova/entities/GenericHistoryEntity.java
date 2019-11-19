@@ -45,6 +45,5 @@ public abstract class GenericHistoryEntity extends GenericChild<Consultant> {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-    
-
+   
 }

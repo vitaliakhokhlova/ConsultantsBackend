@@ -19,8 +19,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 public class CompetenceItem extends GenericParentWithName<CompetencesConsultant> {
 	
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="group_id")
-    private CompetenceGroup parent2;
+    @JoinColumn(name="group_id") CompetenceGroup parent2;
     
 //    @LazyCollection(LazyCollectionOption.FALSE)
 //	public Set<CompetencesConsultant> getItems() {
@@ -29,16 +28,16 @@ public class CompetenceItem extends GenericParentWithName<CompetencesConsultant>
 
 //	public void setItems(Set<CompetencesConsultant> items) {
 //		this.items = items;
+//		for(CompetencesConsultant item : this.items)
+//		{
+//			item.parent2 = this;
+//		}
 //	}
 
-	@Override
-	public String toString() {
-		return "CompetenceItem [parent2=" + parent2 + ", items=" + items + "]";
-	}
 
-	public CompetenceGroup getParent2() {
-		return parent2;
-	}
+//	public CompetenceGroup getParent2() {
+//		return parent2;
+//	}
 
 //	public void setParent2(CompetenceGroup parent2) {
 //		this.parent2 = parent2;

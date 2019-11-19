@@ -9,12 +9,11 @@ import javax.persistence.Table;
 
 import java.util.List;
 
-
 @Entity
 @Table(name="personal_info")
 public class Consultant extends ConsultantHeader {
 		
-	@OneToMany(mappedBy="parent", orphanRemoval=true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent", orphanRemoval=true, fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<Formation> formations;
 	
 	@OneToMany(mappedBy="parent", orphanRemoval=true, fetch = FetchType.LAZY,cascade = CascadeType.ALL)
@@ -26,11 +25,11 @@ public class Consultant extends ConsultantHeader {
 	
 	@OneToMany(mappedBy="parent", orphanRemoval=true, fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<ProjetHeader> projets;
-	
-	@OneToMany(mappedBy="parent", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+
+	@OneToMany(mappedBy="parent", orphanRemoval=true, fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	private List<CompetencesConsultant> competences;
 	
-	@OneToMany(mappedBy="parent", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent", orphanRemoval=true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<LanguesConsultant> langues;
 
 	public List<LanguesConsultant> getLangues() {
@@ -93,12 +92,15 @@ public class Consultant extends ConsultantHeader {
 		}
 	}
 	
-	public List<CompetencesConsultant> getCompetences() {
-		return competences;
-	}
-	
-	public void setCompetences(List<CompetencesConsultant> competences) {
-		this.competences = competences;
-	}
-	
+//	public List<CompetencesConsultant> getCompetences() {
+//		return competences;
+//	}
+//	
+//	public void setCompetences(List<CompetencesConsultant> competences) {
+//		this.competences = competences;
+//		for(CompetencesConsultant item : this.competences)
+//		{
+//			item.parent = this;
+//		}
+//	}	
 }

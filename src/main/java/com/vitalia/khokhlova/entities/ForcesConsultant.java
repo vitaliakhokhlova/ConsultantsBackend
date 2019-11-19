@@ -6,11 +6,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
-@Table(name="forces")
+@Table(name="forces",
+uniqueConstraints=
+@UniqueConstraint(columnNames = {"parent_id", "parent2_id"}))
 public class ForcesConsultant extends GenericIntermediateEntity<ForceItem> {
 
 	private int position;

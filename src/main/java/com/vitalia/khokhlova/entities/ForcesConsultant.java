@@ -14,7 +14,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @Table(name="forces",
 uniqueConstraints=
 @UniqueConstraint(columnNames = {"parent_id", "parent2_id"}))
-public class ForcesConsultant extends GenericIntermediateEntity<ForceItem> {
+
+public class ForcesConsultant extends GenericChild<Consultant> {
 
 	private int position;
 	
@@ -24,5 +25,18 @@ public class ForcesConsultant extends GenericIntermediateEntity<ForceItem> {
 
 	public void setPosition(int position) {
 		this.position = position;
+	}
+	
+    @ManyToOne()
+    @JoinColumn(name="parent2_id")
+    private ForceItem parent2;
+
+	
+    public ForceItem getParent2() {
+		return parent2;
+	}
+
+	public void setParent2(ForceItem parent2) {
+		this.parent2 = parent2;
 	}
 }

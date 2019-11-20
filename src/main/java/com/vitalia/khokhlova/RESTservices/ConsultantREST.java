@@ -1,6 +1,7 @@
 package com.vitalia.khokhlova.RESTservices;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -30,9 +31,14 @@ public class ConsultantREST extends GenericREST<Consultant> {
 	@Path("/{id}/grouped_competences")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<CompetenceGroup> getGroupedCompetences(@PathParam("id") int id) {
-		List<CompetenceGroup> tList = repository.getGroupedCompetences(id);
-		System.out.println("Got database response");
-		return tList;
+		return repository.getGroupedCompetenceItems(id);
+	}
+	
+	@GET
+	@Path("/{id}/nongrouped_competences")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<CompetenceItem> getNonGroupedCompetenceItems(@PathParam("id") int id) {
+		return repository.getNonGroupedCompetenceItems(id);
 	}
 	
 //	@GET
@@ -48,7 +54,7 @@ public class ConsultantREST extends GenericREST<Consultant> {
 	@Path("/{id}/competences")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<CompetencesConsultant> getExistingCompetences(@PathParam("id") int id) {
-		return repository.getExistingCompetences(id);
+		return repository.getConsultantCompetences(id);
 	}
 
 }

@@ -14,10 +14,29 @@ import javax.persistence.Table;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name="competences_item")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class CompetenceItem extends GenericParentWithName<CompetencesConsultant> {
 	
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="group_id") CompetenceGroup parent2;
+	@JsonIgnoreProperties("items")
+	
+    @ManyToOne()
+    @JoinColumn(name="group_id") 
+    protected CompetenceGroup parent2;
+
+	public CompetenceGroup getParent2() {
+		return parent2;
+	}
+
+	public void setParent2(CompetenceGroup parent2) {
+		this.parent2 = parent2;
+	}
+	
 }

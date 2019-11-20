@@ -1,42 +1,40 @@
 package com.vitalia.khokhlova.entities;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name="competences_group")
 public class CompetenceGroup extends GenericParentWithName<CompetenceItem> {
 	
+	@JsonIgnoreProperties("parent2")
 	
-//	@LazyCollection(LazyCollectionOption.FALSE)
+	public void addItem(CompetenceItem item) {
+		this.items.add(item);
+	}
+	
+	@LazyCollection(LazyCollectionOption.FALSE)
 	public Set<CompetenceItem> getItems() {
 		return items;
 	}
 
 	public void setItems(Set<CompetenceItem> items) {
 		this.items = items;
-		for(CompetenceItem item : this.items)
-		{
-			item.parent2 = this;
-		}
+//		for(CompetenceItem item : this.items)
+//		{
+//			item.parent2 = this;
+//		}
 	}
-
+//
 	@Override
 	public String toString() {
 		return "CompetenceGroup [items=" + items + "]";

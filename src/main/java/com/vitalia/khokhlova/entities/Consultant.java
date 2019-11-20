@@ -7,29 +7,33 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.List;
 
 @Entity
 @Table(name="personal_info")
+@JsonIgnoreProperties 
 public class Consultant extends ConsultantHeader {
 		
-	@OneToMany(mappedBy="parent", orphanRemoval=true, fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent", orphanRemoval=true, cascade = CascadeType.ALL)
 	private List<Formation> formations;
 	
-	@OneToMany(mappedBy="parent", orphanRemoval=true, fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent", orphanRemoval=true, cascade = CascadeType.ALL)
 	@OrderBy("position")
 	private List<ForcesConsultant> forces;
 	
-	@OneToMany(mappedBy="parent", orphanRemoval=true,  fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent", orphanRemoval=true, cascade = CascadeType.ALL)
 	private List<ParcoursHeader> parcours;
 	
-	@OneToMany(mappedBy="parent", orphanRemoval=true, fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent", orphanRemoval=true,cascade = CascadeType.ALL)
 	private List<ProjetHeader> projets;
 
-	@OneToMany(mappedBy="parent", orphanRemoval=true, fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent", orphanRemoval=true,cascade = CascadeType.ALL)
 	private List<CompetencesConsultant> competences;
 	
-	@OneToMany(mappedBy="parent", orphanRemoval=true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="parent", orphanRemoval=true, cascade = CascadeType.ALL)
 	private List<LanguesConsultant> langues;
 
 	public List<LanguesConsultant> getLangues() {
@@ -103,4 +107,5 @@ public class Consultant extends ConsultantHeader {
 			item.parent = this;
 		}
 	}	
+	
 }

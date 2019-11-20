@@ -8,7 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @MappedSuperclass
+@JsonIgnoreProperties 
 public abstract class GenericEntity implements Serializable {  
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -25,8 +29,10 @@ public abstract class GenericEntity implements Serializable {
 		this.id = id;  
 	}  
 	
-	public boolean isNew() {  
-		return null == getId();  
-	}  
+	@JsonIgnore
+	public boolean isNew() {
+		return false;
+		
+	}
 
 }  

@@ -35,7 +35,7 @@ public class CompetencesConsultant extends GenericCompetenceLine {
 		this.niveau = niveau;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name="parent2_id") 
 	private CompetenceItem parent2;
 

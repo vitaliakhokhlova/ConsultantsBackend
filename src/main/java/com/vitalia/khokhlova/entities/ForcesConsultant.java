@@ -14,7 +14,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @Table(name="forces",
 uniqueConstraints=
 @UniqueConstraint(columnNames = {"parent_id", "parent2_id"}))
-
 public class ForcesConsultant extends GenericChild<Consultant> {
 
 	private int position;

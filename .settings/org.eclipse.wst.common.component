@@ -2,6 +2,7 @@
     <wb-module deploy-name="Consultants_Maven">
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp/WEB-INF/lib"/>
         <property name="context-root" value="Consultants_Maven"/>
         <property name="java-output-path" value="/Consultants_Maven/target/classes"/>
     </wb-module>

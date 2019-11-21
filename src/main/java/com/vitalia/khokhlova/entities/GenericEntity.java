@@ -31,8 +31,7 @@ public abstract class GenericEntity implements Serializable {
 	
 	@JsonIgnore
 	public boolean isNew() {
-		return false;
-		
+		return false;		
 	}
-
+	
 }  

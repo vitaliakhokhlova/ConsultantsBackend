@@ -20,6 +20,7 @@ public class ConsultantHeader  extends GenericEntity {
 	private String occupancy;
 	private String mobility;	
 	private Date birthday;
+	
 	ConsultantHeader(){super();}
 	
 	public String getProfile() {

@@ -62,17 +62,20 @@ public class GenericRepository<T> {
 		}
 	}
 
-	public void update(T t) {
+	public T update(T t) {
 		EntityTransaction tx = em.getTransaction();
 		try {
 			tx.begin();
-			em.persist(em.merge(t));
+			t = em.merge(t);
+//			em.flush();
 			tx.commit();
+			
 		}
 		catch (Exception e) {
 			tx.rollback();
 			System.out.println("Updating error");
-		}
+		}   
+		return t;  
 	}
 
 	@SuppressWarnings("unchecked")

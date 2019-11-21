@@ -16,7 +16,12 @@ import java.util.List;
 @Table(name="personal_info")
 @JsonIgnoreProperties 
 public class Consultant extends ConsultantHeader {
-		
+	
+	public Consultant() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@OneToMany(mappedBy="parent", orphanRemoval=true, cascade = CascadeType.ALL)
 	private List<Formation> formations;
 	

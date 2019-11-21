@@ -50,12 +50,12 @@ public class GenericREST<Entity> {
 			repository.delete(id);
 			response = Response.ok("entity " + entity + " is deleted").build();
 		}
-
 		return response;
 	}
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Entity create(Entity entity) {
 		repository.create(entity);
 		return entity;
@@ -63,8 +63,9 @@ public class GenericREST<Entity> {
 
 	@PUT	
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Entity update(Entity entity) {
-		repository.update(entity);
+		entity = repository.update(entity);
 		return entity;
 	}
 

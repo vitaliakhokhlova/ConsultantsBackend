@@ -6,8 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-
-import com.vitalia.khokhlova.entities.Consultant;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.ParameterExpression;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Root;
 
 public class GenericRepository<T> {
 
@@ -30,6 +33,19 @@ public class GenericRepository<T> {
 	public List<T> getAllOrdered(String column){
 		String queryString ="select c from " + entityClass.getName() + " c order by c."+column;
 		Query query = em.createQuery(queryString);
+		List<T> tList= query.getResultList();
+		return tList;
+	}
+	
+	public List<T> getByProperty(String property, String value){
+		CriteriaBuilder cb = em.getCriteriaBuilder();
+		CriteriaQuery<T> q = cb.createQuery(entityClass);
+		Root<T> root = q.from(entityClass);
+		
+		q.select(root).where(cb.like(cb.lower(root.get(property)), "%"+value.toLowerCase()+"%"));
+		
+//		String queryString ="select item from "+entityClass.getName()+" item where lower(item."+property+") like :value order by item.id";
+		TypedQuery<T> query = em.createQuery(q);
 		List<T> tList= query.getResultList();
 		return tList;
 	}
@@ -77,6 +93,8 @@ public class GenericRepository<T> {
 		}   
 		return t;  
 	}
+	
+	
 
 	@SuppressWarnings("unchecked")
 	public List<T> findByQuery(String query) {  

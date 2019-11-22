@@ -37,6 +37,13 @@ public class GenericREST<Entity> {
 	public Entity getById(@PathParam("id") int id) {
 		return repository.getById(id);
 	}
+	
+	@GET
+	@Path("/search_by_{property}/{value}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Entity> getByProperty(@PathParam("property") String property, @PathParam("value") String value) {
+		return repository.getByProperty(property, value);
+	}
 
 	@DELETE
 	@Path("/{id}")

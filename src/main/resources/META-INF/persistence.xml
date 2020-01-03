@@ -4,9 +4,9 @@
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/consultants" />
-            <property name="javax.persistence.jdbc.user" value="postgres" />
-            <property name="javax.persistence.jdbc.password" value="12345" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://consultantprofiles.postgres.database.azure.com:5432/postgres" />
+            <property name="javax.persistence.jdbc.user" value="vitaliakhokhlova@consultantprofiles" />
+            <property name="javax.persistence.jdbc.password" value="123456aA" />
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.hbm2ddl.auto" value="update" />
             <property name="hibernate.archive.autodetection" value="class, hbm" />

@@ -5,6 +5,9 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @MappedSuperclass
 public class ConsultantHeader  extends GenericEntity {
 	
@@ -19,6 +22,15 @@ public class ConsultantHeader  extends GenericEntity {
 	private String interests;
 	private String occupancy;
 	private String mobility;	
+	private String photoname;
+	public String getPhotoname() {
+		return photoname;
+	}
+
+	public void setPhotoname(String photoname) {
+		this.photoname = photoname;
+	}
+
 	private Date birthday;
 	
 	ConsultantHeader(){super();}

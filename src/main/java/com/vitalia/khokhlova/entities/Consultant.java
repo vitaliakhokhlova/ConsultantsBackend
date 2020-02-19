@@ -7,19 +7,33 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import java.util.List;
 
 @Entity
 @Table(name="personal_info")
-@JsonIgnoreProperties 
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id", scope=Consultant.class) 
 public class Consultant extends ConsultantHeader {
-	
+		
 	public Consultant() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public List<CompetencesConsultant> getCompetences() {
+		return competences;
+	}
+
+	public void setCompetences(List<CompetencesConsultant> competences) {
+		this.competences = competences;
+		for(CompetencesConsultant item : this.competences)
+		{
+			item.parent = this;
+		}
 	}
 
 	@OneToMany(mappedBy="parent", orphanRemoval=true, cascade = CascadeType.ALL)
@@ -96,18 +110,6 @@ public class Consultant extends ConsultantHeader {
 	public void setForces(List<ForcesConsultant> forces) {
 		this.forces = forces;
 		for(ForcesConsultant item : this.forces)
-		{
-			item.parent = this;
-		}
-	}
-	
-	public List<CompetencesConsultant> getCompetences() {
-		return competences;
-	}
-	
-	public void setCompetences(List<CompetencesConsultant> competences) {
-		this.competences = competences;
-		for(CompetencesConsultant item : this.competences)
 		{
 			item.parent = this;
 		}

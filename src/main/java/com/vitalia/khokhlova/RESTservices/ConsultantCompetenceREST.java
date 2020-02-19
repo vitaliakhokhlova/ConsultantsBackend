@@ -6,9 +6,9 @@ import com.vitalia.khokhlova.entities.CompetenceItem;
 import com.vitalia.khokhlova.entities.CompetencesConsultant;
 
 @Path("/competence")
-public class CompetencesREST extends GenericREST<CompetencesConsultant> {
+public class ConsultantCompetenceREST extends GenericREST<CompetencesConsultant> {
 	
-	public CompetencesREST(){
+	public ConsultantCompetenceREST(){
 		super(CompetencesConsultant.class);
 	}
 

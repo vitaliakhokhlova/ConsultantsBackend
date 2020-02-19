@@ -5,9 +5,9 @@ import javax.ws.rs.Path;
 import com.vitalia.khokhlova.entities.ForceItem;
 
 @Path("/force")
-public class ForceREST  extends GenericREST<ForceItem> {
+public class ForceItemREST  extends GenericREST<ForceItem> {
 
-	public ForceREST() {
+	public ForceItemREST() {
 		super(ForceItem.class);
 	}
 }

@@ -22,10 +22,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name="competences_item")
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class CompetenceItem extends GenericParentWithName<CompetencesConsultant> {
-	
-	@JsonIgnoreProperties("items")
 	
     @ManyToOne()
     @JoinColumn(name="group_id") 
@@ -34,6 +31,7 @@ public class CompetenceItem extends GenericParentWithName<CompetencesConsultant>
 	public CompetenceGroup getParent2() {
 		return parent2;
 	}
+	
 
 	public void setParent2(CompetenceGroup parent2) {
 		this.parent2 = parent2;

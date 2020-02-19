@@ -47,7 +47,7 @@ public class GenericREST<Entity> {
 
 	@DELETE
 	@Path("/{id}")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_PLAIN)
 	public Response delete(@PathParam("id") int id) {
 		Response response;
 		Entity entity = repository.getById(id);

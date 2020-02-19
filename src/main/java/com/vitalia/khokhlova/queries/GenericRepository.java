@@ -83,13 +83,13 @@ public class GenericRepository<T> {
 		try {
 			tx.begin();
 			t = em.merge(t);
-//			em.flush();
+			em.flush();
 			tx.commit();
 			
 		}
 		catch (Exception e) {
 			tx.rollback();
-			System.out.println("Updating error");
+			System.out.println("Updating error: "+e);
 		}   
 		return t;  
 	}

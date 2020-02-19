@@ -10,9 +10,9 @@ import javax.ws.rs.core.MediaType;
 import com.vitalia.khokhlova.entities.LangueItem;
 
 @Path("/langue")
-public class LangueREST extends GenericREST<LangueItem> {
+public class LangueItemREST extends GenericREST<LangueItem> {
 	
-	public LangueREST() {
+	public LangueItemREST() {
 		super(LangueItem.class);
 	}
 }

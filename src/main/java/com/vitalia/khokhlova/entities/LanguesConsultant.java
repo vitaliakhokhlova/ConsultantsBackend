@@ -30,7 +30,7 @@ public class LanguesConsultant extends GenericCompetenceLine {
 		this.niveau = niveau;
 	}
 	
-	@ManyToOne()
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="parent2_id")
 	private LangueItem parent2;
 

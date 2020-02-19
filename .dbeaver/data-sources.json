@@ -1,0 +1,85 @@
+{
+	"folders": {},
+	"connections": {
+		"postgres-jdbc-16f7f8fa98e-1edb074b0424d12e": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "PostgreSQL - postgres",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "localhost",
+				"port": "5432",
+				"database": "postgres",
+				"url": "jdbc:postgresql://localhost:5432/postgres",
+				"home": "postgresql-x64-12",
+				"type": "dev",
+				"provider-properties": {
+					"@dbeaver-show-non-default-db@": "false",
+					"@dbeaver-show-template-db@": "false",
+					"postgresql.dd.plain.string": "false",
+					"postgresql.dd.tag.string": "false"
+				},
+				"handlers": {}
+			}
+		},
+		"postgres-jdbc-16f7f908759-1af2e3fb73e40cf9": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "PostgreSQL - postgres 2",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "consultantprofiles.postgres.database.azure.com",
+				"port": "5432",
+				"database": "postgres",
+				"url": "jdbc:postgresql://consultantprofiles.postgres.database.azure.com:5432/postgres",
+				"home": "postgresql-x64-12",
+				"type": "dev",
+				"provider-properties": {
+					"@dbeaver-show-non-default-db@": "false",
+					"@dbeaver-show-template-db@": "false",
+					"postgresql.dd.plain.string": "false",
+					"postgresql.dd.tag.string": "false"
+				},
+				"handlers": {}
+			}
+		},
+		"postgres-jdbc-16f7f995605-13067fa4efffa3ae": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "PostgreSQL - postgres 3",
+			"save-password": true,
+			"read-only": false,
+			"configuration": {
+				"host": "consultantprofiles.postgres.database.azure.com",
+				"port": "5432",
+				"database": "postgres",
+				"url": "jdbc:postgresql://consultantprofiles.postgres.database.azure.com:5432/postgres",
+				"home": "postgresql-x64-12",
+				"type": "dev",
+				"properties": {
+					"connectTimeout": "20",
+					"loginTimeout": "20"
+				},
+				"provider-properties": {
+					"@dbeaver-show-non-default-db@": "false",
+					"@dbeaver-show-template-db@": "false",
+					"postgresql.dd.plain.string": "false",
+					"postgresql.dd.tag.string": "false"
+				},
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false
+		}
+	}
+}

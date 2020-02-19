@@ -56,5 +56,19 @@ public class ConsultantREST extends GenericREST<Consultant> {
 	public List<CompetencesConsultant> getExistingCompetences(@PathParam("id") int id) {
 		return repository.getConsultantCompetences(id);
 	}
+	
+	@GET
+	@Path("/{id}/all_competences")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<CompetenceItem> getAllCompetences(@PathParam("id") int id) {
+		return repository.getAllCompetences(id);
+	}
+	
+	@GET
+	@Path("/search_by_competence/{value}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Consultant> getByCompetence(@PathParam("value") String value) {
+		return repository.getByCompetence(value);
+	}
 
 }

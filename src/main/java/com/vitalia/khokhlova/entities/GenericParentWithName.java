@@ -26,6 +26,9 @@ public class GenericParentWithName<T> extends GenericEntity {
 	@OrderBy("id")
 	@OneToMany(mappedBy="parent2", orphanRemoval=true, cascade = CascadeType.ALL)
 	protected Set<T> items;
+	
+
+	
 
 	@Override
 	public String toString() {

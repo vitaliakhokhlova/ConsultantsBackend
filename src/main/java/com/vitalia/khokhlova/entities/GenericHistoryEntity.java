@@ -1,9 +1,5 @@
 package com.vitalia.khokhlova.entities;
 
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
@@ -13,6 +9,15 @@ public abstract class GenericHistoryEntity extends GenericChild<Consultant> {
     private String description;
     private String place;    
     private String dates;
+    private String pictogram;
+
+	public String getPictogram() {
+		return pictogram;
+	}
+
+	public void setPictogram(String pictogram) {
+		this.pictogram = pictogram;
+	}
 
 	public String getInstitution() {
 		return institution;

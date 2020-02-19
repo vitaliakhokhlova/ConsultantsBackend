@@ -9,11 +9,20 @@ import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-@MappedSuperclass
+@MappedSuperclass 
 public class GenericChild<T> extends GenericEntity {
 		
     @ManyToOne()
 	@JoinColumn(name="parent_id") 
+    @JsonIdentityReference(alwaysAsId=true) 
 	protected T parent;
+
+	public T getParent() {
+		return parent;
+	}
+
+	public void setParent(T parent) {
+		this.parent = parent;
+	}
 
 }

@@ -5,6 +5,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.vitalia.khokhlova.entities.generics.GenericDetail;
 
 @Entity
 @Table(name="projet_details")

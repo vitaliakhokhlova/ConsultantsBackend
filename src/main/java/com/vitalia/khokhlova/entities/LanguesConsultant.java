@@ -11,12 +11,13 @@ import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.vitalia.khokhlova.entities.generics.GenericCompetenceLine;
 
 @Entity
 @Table(name="langues",
 uniqueConstraints=
 @UniqueConstraint(columnNames = {"parent_id", "parent2_id"}))
-public class LanguesConsultant extends GenericCompetenceLine {
+public class LanguesConsultant extends GenericCompetenceLine<LangueItem> {
 	
 	@Column(length=20)
 	private String niveau;
@@ -29,18 +30,5 @@ public class LanguesConsultant extends GenericCompetenceLine {
 	public void setNiveau(String niveau) {
 		this.niveau = niveau;
 	}
-	
-	@ManyToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name="parent2_id")
-	private LangueItem parent2;
-
-
-	public LangueItem getParent2() {
-		return parent2;
-	}
-
-	public void setParent2(LangueItem parent2) {
-		this.parent2 = parent2;
-	}
- 
+	 
 }

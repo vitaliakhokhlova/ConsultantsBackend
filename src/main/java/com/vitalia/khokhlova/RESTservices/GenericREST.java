@@ -5,7 +5,7 @@ import java.util.List;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 
-import com.vitalia.khokhlova.queries.GenericRepository;
+import com.vitalia.khokhlova.repositories.GenericRepository;
 
 public class GenericREST<Entity> {
 	

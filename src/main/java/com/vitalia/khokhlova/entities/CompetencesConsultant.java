@@ -18,12 +18,13 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.vitalia.khokhlova.entities.generics.GenericCompetenceLine;
 
 @Entity
 @Table(name="competences",
 uniqueConstraints=
 @UniqueConstraint(columnNames = {"parent_id", "parent2_id"}))
-public class CompetencesConsultant extends GenericCompetenceLine {
+public class CompetencesConsultant extends GenericCompetenceLine<CompetenceItem> {
 
 	private int niveau;	
 
@@ -35,14 +36,5 @@ public class CompetencesConsultant extends GenericCompetenceLine {
 		this.niveau = niveau;
 	}
 
-	@ManyToOne()
-	@JoinColumn(name="parent2_id") 
-	private CompetenceItem parent2;
-
-	public CompetenceItem getParent2() {
-		return parent2;	}
-	
-    public void setParent2(CompetenceItem parent2) {
-		this.parent2 = parent2;
-	}    	
+  	
 }

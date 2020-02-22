@@ -10,25 +10,12 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.vitalia.khokhlova.entities.generics.GenericHistoryEntityWithDetails;
 
 @Entity
 @Table(name="parcours_headers")
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id", scope = ParcoursHeader.class)
-public class ParcoursHeader  extends GenericHistoryEntity {
+public class ParcoursHeader  extends GenericHistoryEntityWithDetails<ParcoursDetail> {
 	
-	@OneToMany(mappedBy="parent", orphanRemoval=true, fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-	protected List<ParcoursDetail> details;
-
-	public List<ParcoursDetail> getDetails() {
-		return details;
-	}
-	
-	public void setDetails(List<ParcoursDetail> details) {
-		this.details = details;
-		for(ParcoursDetail detail : this.details)
-		{
-			detail.parent = this;
-		}
-	}
 		
 }

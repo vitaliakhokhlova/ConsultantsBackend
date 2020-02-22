@@ -1,4 +1,4 @@
-package com.vitalia.khokhlova.entities;
+package com.vitalia.khokhlova.entities.generics;
 
 import java.io.Serializable;
 
@@ -21,7 +21,7 @@ public abstract class GenericEntity implements Serializable {
 	@Column(unique=true, nullable=false)
 	private Integer id;
 	
-	GenericEntity(){}
+	public GenericEntity(){}
 
 	public Integer getId() {  
 		return this.id;  

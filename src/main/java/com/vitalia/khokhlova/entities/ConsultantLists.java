@@ -16,10 +16,10 @@ import java.util.List;
 
 @Entity
 @Table(name="personal_info")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id", scope=Consultant.class) 
-public class Consultant extends ConsultantHeader {
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id", scope=ConsultantLists.class) 
+public class ConsultantLists extends ConsultantHeader {
 		
-	public Consultant() {
+	public ConsultantLists() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

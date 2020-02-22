@@ -1,4 +1,4 @@
-package com.vitalia.khokhlova.queries;
+package com.vitalia.khokhlova.repositories;
 
 import java.util.List;
 
@@ -43,8 +43,6 @@ public class GenericRepository<T> {
 		Root<T> root = q.from(entityClass);
 		
 		q.select(root).where(cb.like(cb.lower(root.get(property)), "%"+value.toLowerCase()+"%"));
-		
-//		String queryString ="select item from "+entityClass.getName()+" item where lower(item."+property+") like :value order by item.id";
 		TypedQuery<T> query = em.createQuery(q);
 		List<T> tList= query.getResultList();
 		return tList;
@@ -93,7 +91,6 @@ public class GenericRepository<T> {
 		}   
 		return t;  
 	}
-	
 	
 
 	@SuppressWarnings("unchecked")

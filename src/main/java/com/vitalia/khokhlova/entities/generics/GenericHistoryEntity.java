@@ -1,24 +1,23 @@
-package com.vitalia.khokhlova.entities;
+package com.vitalia.khokhlova.entities.generics;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
+
+import com.vitalia.khokhlova.entities.ConsultantLists;
+import com.vitalia.khokhlova.entities.ProjetDetail;
+import com.vitalia.khokhlova.entities.generics.*;
 
 @MappedSuperclass
-public abstract class GenericHistoryEntity extends GenericChild<Consultant> {
+public abstract class GenericHistoryEntity extends GenericChildWithName<ConsultantLists> {
 	
     private String institution;
-    private String description;
     private String place;    
     private String dates;
-    private String pictogram;
-
-	public String getPictogram() {
-		return pictogram;
-	}
-
-	public void setPictogram(String pictogram) {
-		this.pictogram = pictogram;
-	}
-
+	
 	public String getInstitution() {
 		return institution;
 	}
@@ -41,14 +40,6 @@ public abstract class GenericHistoryEntity extends GenericChild<Consultant> {
 
 	public void setDates(String dates) {
 		this.dates = dates;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
    
 }

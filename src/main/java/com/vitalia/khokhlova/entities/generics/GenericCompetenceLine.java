@@ -1,4 +1,4 @@
-package com.vitalia.khokhlova.entities;
+package com.vitalia.khokhlova.entities.generics;
 
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
@@ -6,8 +6,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 
+import com.vitalia.khokhlova.entities.CompetenceItem;
+import com.vitalia.khokhlova.entities.ConsultantLists;
+
 @MappedSuperclass
-public class GenericCompetenceLine extends GenericChild<Consultant>{
+public class GenericCompetenceLine<T extends GenericParentWithName> extends GenericJoinEntity<T>{
 	
 	private int experience;
 	private int annee;
@@ -45,5 +48,5 @@ public class GenericCompetenceLine extends GenericChild<Consultant>{
 	public void setInteret(String interet) {
 		this.interet = interet;
 	}
-	
+		
 }

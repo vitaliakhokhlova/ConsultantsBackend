@@ -7,6 +7,7 @@ import javax.persistence.MappedSuperclass;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.vitalia.khokhlova.entities.generics.GenericEntity;
 
 @MappedSuperclass
 public class ConsultantHeader  extends GenericEntity {

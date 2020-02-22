@@ -1,4 +1,4 @@
-package com.vitalia.khokhlova.entities;
+package com.vitalia.khokhlova.entities.generics;
 
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -10,12 +10,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @MappedSuperclass 
-public class GenericChild<T> extends GenericEntity {
+public abstract class GenericChild<T> extends GenericEntity {
 		
     @ManyToOne()
 	@JoinColumn(name="parent_id") 
-    @JsonIdentityReference(alwaysAsId=true) 
-	protected T parent;
+    @JsonIdentityReference(alwaysAsId=true)
+	public T parent;
 
 	public T getParent() {
 		return parent;

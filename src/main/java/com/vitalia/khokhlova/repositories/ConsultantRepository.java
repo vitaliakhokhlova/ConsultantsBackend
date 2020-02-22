@@ -1,4 +1,4 @@
-package com.vitalia.khokhlova.queries;
+package com.vitalia.khokhlova.repositories;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -14,38 +14,16 @@ import javax.persistence.criteria.Root;
 
 import com.vitalia.khokhlova.entities.*;
 
-public class ConsultantRepository extends GenericRepository<Consultant>{
+public class ConsultantRepository extends GenericRepository<ConsultantLists>{
 	
     public ConsultantRepository() {
-    	super(Consultant.class);  
+    	super(ConsultantLists.class);  
     }
 	
 	public List<CompetenceGroup> getGroupedCompetenceItems(int id){
 		String queryString ="select distinct g from CompetenceGroup g JOIN g.items i JOIN i.items c WHERE c.parent.id=:id";
 		Query query = em.createQuery(queryString).setParameter("id", id);	
-//		String nativeQueryString=
-//			"with ii as "+
-//					" (select i.group_id "+
-//					" from competences_item i "+
-//					" join competences c "+
-//					" on c.parent2_id=i.id "+
-//					" where c.parent_id=:id)" + 
-//			" select * from competences_group g " + 
-//			" join ii " + 
-//			" on ii.group_id=g.id";
-//		Query query = em.createNativeQuery(nativeQueryString, CompetenceGroup.class).setParameter("id", id);
 		List<CompetenceGroup> gList= query.getResultList();
-		System.out.println(gList);
-//		List<CompetenceItem> cList = getNonGroupedCompetenceItems(id);
-//		for(CompetenceGroup g : gList) {
-//			Set<CompetenceItem> items = g.getItems();
-//			Iterator<CompetenceItem> i = items.iterator();
-//			while (i.hasNext()) {
-//			   String s = i.next(); 
-//					   i.remove();
-//			}
-//		}
-		System.out.println(gList);
 		return gList;
 	}
 		
@@ -70,19 +48,18 @@ public class ConsultantRepository extends GenericRepository<Consultant>{
 		return tList;
 	}
 	
-	public List<Consultant> getByCompetence(String value){
-		Class<Consultant> entityClass = Consultant.class;
+	public List<ConsultantLists> getByCompetence(String value){
+		Class<ConsultantLists> entityClass = ConsultantLists.class;
 		CriteriaBuilder cb = em.getCriteriaBuilder();
-		CriteriaQuery<Consultant> q = cb.createQuery(entityClass);
-		Root<Consultant> consultant = q.from(entityClass);
-		Join<Consultant, CompetencesConsultant> competences = consultant.join("competences");
+		CriteriaQuery<ConsultantLists> q = cb.createQuery(entityClass);
+		Root<ConsultantLists> consultant = q.from(entityClass);
+		Join<ConsultantLists, CompetencesConsultant> competences = consultant.join("competences");
 		Join<CompetencesConsultant, CompetenceItem> item = competences.join("parent2");
 		
-		q.select(consultant).where(cb.like(cb.lower(item.get("description")), "%"+value.toLowerCase()+"%"));
+		q.select(consultant).where(cb.like(cb.lower(item.get("description")), value.toLowerCase()));
 		
-//		String queryString ="select item from "+entityClass.getName()+" item where lower(item."+property+") like :value order by item.id";
-		TypedQuery<Consultant> query = em.createQuery(q);
-		List<Consultant> tList= query.getResultList();
+		TypedQuery<ConsultantLists> query = em.createQuery(q);
+		List<ConsultantLists> tList= query.getResultList();
 		return tList;
 	}
 }

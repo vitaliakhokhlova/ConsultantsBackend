@@ -8,8 +8,9 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.vitalia.khokhlova.entities.GenericEntity;
 import com.vitalia.khokhlova.entities.LanguesConsultant;
+import com.vitalia.khokhlova.entities.generics.GenericEntity;
+import com.vitalia.khokhlova.entities.generics.GenericParentWithName;
 
 @Entity
 @Table(name="langue_items")

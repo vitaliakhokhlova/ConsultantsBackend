@@ -9,12 +9,13 @@ import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.vitalia.khokhlova.entities.generics.GenericJoinEntity;
 
 @Entity
 @Table(name="forces",
 uniqueConstraints=
 @UniqueConstraint(columnNames = {"parent_id", "parent2_id"}))
-public class ForcesConsultant extends GenericChild<Consultant> {
+public class ForcesConsultant extends GenericJoinEntity<ForceItem> {
 
 	private int position;
 	
@@ -26,16 +27,5 @@ public class ForcesConsultant extends GenericChild<Consultant> {
 		this.position = position;
 	}
 	
-    @ManyToOne()
-    @JoinColumn(name="parent2_id")
-    private ForceItem parent2;
-
-	
-    public ForceItem getParent2() {
-		return parent2;
-	}
-
-	public void setParent2(ForceItem parent2) {
-		this.parent2 = parent2;
-	}
+   
 }

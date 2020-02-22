@@ -1,4 +1,4 @@
-package com.vitalia.khokhlova.entities;
+package com.vitalia.khokhlova.entities.generics;
 
 import java.util.Set;
 
@@ -26,13 +26,5 @@ public class GenericParentWithName<T> extends GenericEntity {
 	@OrderBy("id")
 	@OneToMany(mappedBy="parent2", orphanRemoval=true, cascade = CascadeType.ALL)
 	protected Set<T> items;
-	
-
-	
-
-	@Override
-	public String toString() {
-		return "GenericParentWithName [description=" + description + "]";
-	}
 	
 }

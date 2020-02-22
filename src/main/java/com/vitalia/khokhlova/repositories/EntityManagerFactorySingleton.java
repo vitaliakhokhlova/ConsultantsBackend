@@ -1,4 +1,4 @@
-package com.vitalia.khokhlova.queries;
+package com.vitalia.khokhlova.repositories;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

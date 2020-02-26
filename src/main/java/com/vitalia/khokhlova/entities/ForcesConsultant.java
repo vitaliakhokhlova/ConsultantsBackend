@@ -14,7 +14,7 @@ import com.vitalia.khokhlova.entities.generics.GenericJoinEntity;
 @Entity
 @Table(name="forces",
 uniqueConstraints=
-@UniqueConstraint(columnNames = {"parent_id", "parent2_id"}))
+@UniqueConstraint(columnNames = {"parent_id", "parent2_id"}, name="forces_unique_join_ids"))
 public class ForcesConsultant extends GenericJoinEntity<ForceItem> {
 
 	private int position;

@@ -3,6 +3,7 @@ package com.vitalia.khokhlova.entities;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Lob;
 import javax.persistence.MappedSuperclass;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -24,6 +25,19 @@ public class ConsultantHeader  extends GenericEntity {
 	private String occupancy;
 	private String mobility;	
 	private String photoname;
+	@Lob
+	private String userpic;
+	
+	
+
+	public String getUserpic() {
+		return userpic;
+	}
+
+	public void setUserpic(String userpic) {
+		this.userpic = userpic;
+	}
+
 	public String getPhotoname() {
 		return photoname;
 	}

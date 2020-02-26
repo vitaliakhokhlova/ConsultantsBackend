@@ -16,7 +16,7 @@ import java.util.List;
 
 @Entity
 @Table(name="personal_info")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id", scope=ConsultantLists.class) 
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="deep_id", scope=ConsultantLists.class) 
 public class ConsultantLists extends ConsultantHeader {
 		
 	public ConsultantLists() {

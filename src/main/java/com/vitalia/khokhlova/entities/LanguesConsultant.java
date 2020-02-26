@@ -16,7 +16,7 @@ import com.vitalia.khokhlova.entities.generics.GenericCompetenceLine;
 @Entity
 @Table(name="langues",
 uniqueConstraints=
-@UniqueConstraint(columnNames = {"parent_id", "parent2_id"}))
+@UniqueConstraint(columnNames = {"parent_id", "parent2_id"}, name="langue_unique_join_ids"))
 public class LanguesConsultant extends GenericCompetenceLine<LangueItem> {
 	
 	@Column(length=20)

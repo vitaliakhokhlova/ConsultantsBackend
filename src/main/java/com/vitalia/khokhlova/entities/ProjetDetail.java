@@ -9,7 +9,7 @@ import com.vitalia.khokhlova.entities.generics.GenericDetail;
 
 @Entity
 @Table(name="projet_details")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id", scope = ProjetDetail.class)
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="deep_id", scope = ProjetDetail.class)
 public class ProjetDetail extends GenericDetail<ProjetHeader>{
 	
 	

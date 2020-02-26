@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -28,7 +29,7 @@ import com.vitalia.khokhlova.entities.generics.GenericParentWithName;
 public class CompetenceItem extends GenericParentWithName<CompetencesConsultant> {
 	
     @ManyToOne()
-    @JoinColumn(name="group_id") 
+    @JoinColumn(name="group_id", foreignKey=@ForeignKey(name="group_id_fk")) 
     protected CompetenceGroup parent2;
 
 	public CompetenceGroup getParent2() {

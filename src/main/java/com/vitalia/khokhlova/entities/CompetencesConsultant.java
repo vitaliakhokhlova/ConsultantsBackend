@@ -23,7 +23,7 @@ import com.vitalia.khokhlova.entities.generics.GenericCompetenceLine;
 @Entity
 @Table(name="competences",
 uniqueConstraints=
-@UniqueConstraint(columnNames = {"parent_id", "parent2_id"}))
+@UniqueConstraint(columnNames = {"parent_id", "parent2_id"}, name="competences_unique_join_ids"))
 public class CompetencesConsultant extends GenericCompetenceLine<CompetenceItem> {
 
 	private int niveau;	

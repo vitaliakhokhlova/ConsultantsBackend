@@ -10,7 +10,7 @@ import com.vitalia.khokhlova.entities.CompetenceItem;
 import com.vitalia.khokhlova.entities.ConsultantLists;
 
 @MappedSuperclass
-public class GenericCompetenceLine<T extends GenericParentWithName> extends GenericJoinEntity<T>{
+public abstract class GenericCompetenceLine<T extends GenericParentWithName> extends GenericJoinEntity<T>{
 	
 	private int experience;
 	private int annee;

@@ -14,7 +14,7 @@ import com.vitalia.khokhlova.entities.generics.GenericHistoryEntityWithDetails;
 
 @Entity
 @Table(name="projet_headers")
-@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id", scope = ProjetHeader.class)
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="deep_id", scope = ProjetHeader.class)
 public class ProjetHeader  extends GenericHistoryEntityWithDetails<ProjetDetail> {
 
 

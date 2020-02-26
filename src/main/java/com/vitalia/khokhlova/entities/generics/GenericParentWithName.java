@@ -11,7 +11,7 @@ import javax.persistence.OrderBy;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @MappedSuperclass
-public class GenericParentWithName<T> extends GenericEntity {
+public abstract class GenericParentWithName<T> extends GenericEntity {
 	
 	private String description;
 
